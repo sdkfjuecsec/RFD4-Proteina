@@ -62,6 +62,16 @@ Key features:
 - **Fast inference:** `torch.compile` by default, with an optional BioIR backend (`inference_backend=bioir`).
 - **Hugging Face release and Python API** alongside the `rfd4-generate`, `rfd4-evaluate` and training CLIs.
 
+**OPEN TRAINING DATA — THE ENTIRE TRAINING SET IS PUBLIC.** Every dataset used by the released flow
+model and autoencoder recipes is published on the
+[Hugging Face dataset](https://huggingface.co/datasets/nvidia/RFD4-Proteina): 33,527 objects (2.13 TB)
+across 19 configurations and 17 components, covering PDB interfaces, PLINDER protein–ligand systems,
+AlphaFold DB monomers, RNA, glycans, non-canonical amino acids, cyclic peptides and distillation sets.
+Files keep the training-store layout, so a download can serve directly as `DATASET_STORE_ROOT`;
+annotations are CC BY 4.0, structures keep their upstream terms. See the
+[dataset inventory](https://huggingface.co/datasets/nvidia/RFD4-Proteina/blob/main/dataset-inventory.json)
+and the [training guide](https://rfd4-proteina.org/latest/contributing/developer-guide.html).
+
 ## System requirements
 
 - Linux x86_64, Python 3.12, and an NVIDIA GPU with a CUDA 13-compatible driver (CUDA 12 and CPU-only containers are also available).
@@ -195,7 +205,8 @@ HF caches downloaded weights; `rfd4.generate` reuses the loaded model.
 For a native local checkpoint, set `hf_ckpt_path=null`,
 `ckpt_path=/path/to/checkpoints`, `ckpt_name=model.ckpt`, and
 `autoencoder_ckpt_path=/path/to/ae.ckpt`.
-Training datasets are separate from model downloads: see the
+Training datasets are separate from model downloads: the complete set used by the release recipes is
+published in the [Hugging Face dataset](https://huggingface.co/datasets/nvidia/RFD4-Proteina); see the
 [training guide](https://rfd4-proteina.org/latest/contributing/developer-guide.html).
 
 - [Running the model](https://rfd4-proteina.org/latest/how-to/run-the-model.html): binders, motif scaffolding, partial diffusion, and sampling settings.
